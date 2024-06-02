@@ -6,6 +6,7 @@ import AppLayout from "../components/AppLayout.vue";
 import Dashboard from "../views/Dashboard.vue";
 import store from "../store/index.js";
 import UserList from "../views/UserList.vue";
+import UserView from "../views/UserView.vue";
 
 const routes = [
     {
@@ -30,6 +31,11 @@ const routes = [
                 path: 'users',
                 name: 'app.users',
                 component: UserList
+            },
+            {
+                path: 'user/:id',
+                name: 'app.user',
+                component: UserView
             }
         ]
     },
