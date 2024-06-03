@@ -20,5 +20,7 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::delete('/user/{id}', [\App\Http\Controllers\Api\DeleteUserController::class, 'deleteUser']);
 });
 
+Route::get('/user/{id}', [App\Http\Controllers\Api\GetUserController::class, 'getUser']);
+Route::put('/user/{id}', [\App\Http\Controllers\Api\UpdateUserController::class, 'update']);
 Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
 Route::post('/registered', [\App\Http\Controllers\Api\RegisteredUserController::class, 'registerAccount']);

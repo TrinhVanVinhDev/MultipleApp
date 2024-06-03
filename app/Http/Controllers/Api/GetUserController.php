@@ -22,24 +22,14 @@ class GetUserController extends Controller
             ->orderBy($sortField, $sortDirection)
             ->paginate($perPage);
         return UserResource::collection($query);
-//        $datas = User::get();
-//        $userArr = [];
-//        foreach ($datas as $data) {
-//            $dataResource = new UserResource($data);
-//            $userArr[] = $dataResource->jsonSerialize();
-//        }
-//        return response([
-//            "userList" => $userArr
-//        ]);
     }
 
     /*
      * Get user info
      */
-    public function getUser(Request $request) {
+    public function getUser($id) {
 
-        $data = User::get();
-        $id = $request;
+        $data = User::where('id', $id)->first();
         return response([
             "data" => new UserResource($data)
         ]);

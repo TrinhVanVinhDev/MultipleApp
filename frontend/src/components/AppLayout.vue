@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div  class="dark:bg-gray-900">
         <!--    Sidebar-->
 <!--        <Sidebar :class="{'-ml-[200px]': !sidebarOpened}"/>-->
         <!--/    Sidebar-->
