@@ -1,4 +1,4 @@
-export function setUser(state, user) {
+export function setUserLogin(state, user) {
     state.user.data = user;
     if(user) {
         sessionStorage.setItem('userId', user.id);
@@ -20,6 +20,15 @@ export function setUsers(state, [loading, data = null]) {
     if (data) {
         state.users = {
             ...state.users,
+            data: data.data
+        }
+    }
+}
+
+export function setUser(state, [loading, data = null]) {
+    if (data) {
+        state.userUpdate = {
+            ...state.userUpdate,
             data: data.data
         }
     }

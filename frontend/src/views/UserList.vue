@@ -61,7 +61,7 @@
                 </div>
             </td>
             <td class="px-6 py-4">
-                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" @click="showAddNewModal()">Edit</a>
+                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" @click="showAddNewModal(person)">Edit</a>
                 |
                 <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline" @click="deleteUser(person)">Delete</a>
             </td>
@@ -103,8 +103,9 @@ function deleteUser(user) {
     }
 }
 
-function showAddNewModal() {
-    showUserModal.value = true
+function showAddNewModal(user) {
+    store.dispatch('getUser', user.id)
+        .then(() => showUserModal.value = true);
 }
 
 function onModalClose() {

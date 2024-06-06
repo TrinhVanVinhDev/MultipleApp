@@ -13,7 +13,7 @@ class UpdateUserController extends Controller
         try {
             $userInfo = $request->validate([
                 'name' => ['string', 'max:255'],
-                'email' => ['string', 'email', 'max:255', 'unique:users'],
+                'email' => ['string', 'email', 'max:255', 'unique:users,email,' .$id],
             ]);
             DB::beginTransaction();
             $user = User::where('id', $id);

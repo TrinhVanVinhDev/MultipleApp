@@ -6,5 +6,9 @@ export default {
     users: {
         loading: false,
         data: []
+    },
+    userUpdate: {
+        loading: false,
+        data: []
     }
 }
