@@ -68,7 +68,8 @@
         </tr>
         </tbody>
     </table>
-    <userModal v-if="showUserModal" :user="userModal" @close="onModalClose"/>
+    <userModal v-if="showUserModal" @close="onModalClose"/>
+    <spinModal v-if="showSpin"/>
 </template>
 
 <script setup>
@@ -76,10 +77,12 @@ import {computed, onMounted, ref} from "vue";
 import router from "../router/index.js";
 import store from "../store/index.js";
 import userModal from "./UserModal.vue";
+import spinModal from "./SpinModal.vue"
 
 const users = computed(() => store.state.users);
 const currentUserId = sessionStorage.getItem('userId');
 const showUserModal = ref(false);
+const showSpin = ref(false);
 
 onMounted(() => {
     getUsers();
@@ -104,8 +107,13 @@ function deleteUser(user) {
 }
 
 function showAddNewModal(user) {
+    showSpin.value = true;
     store.dispatch('getUser', user.id)
-        .then(() => showUserModal.value = true);
+        .then(() => {
+            showSpin.value = false;
+            showUserModal.value = true;
+
+        });
 }
 
 function onModalClose() {
